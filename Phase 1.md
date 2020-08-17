@@ -39,6 +39,9 @@ The user can enter data, but now we need to create the device and save it to the
     device.save()
 ...
 ```
+
+Once the user fills the form out, we get a new device in Netbox
+
  ![GitHub Logo](/img/phase%201%20device.png)
 
  
