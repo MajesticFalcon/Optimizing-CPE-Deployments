@@ -23,7 +23,7 @@ We need to add these variables to our device so they can be used to generate a c
     INET_VLAN_ID_ID = VLAN.objects.get(vid=900)
     MGMT_VLAN_ID_ID = VLAN.objects.get(vid=107)
 ...
-interfaces = Interface.objects.filter(device_id=device.id)
+        interfaces = Interface.objects.filter(device_id=device.id)
         enabled_interfaces = []
         mgmt_intf = interfaces.get(name="b107")
         enabled_interfaces.append(mgmt_intf)
