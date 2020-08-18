@@ -58,7 +58,7 @@ To accomplish these goals, we can utilize the following:
 
 *This primer won’t detail how any of these services work, but instead how they may be utilized to accomplish the task above.
 
-[Phase 1: An intuitive interface that will document our CPE](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/Phase%201.md)
+[Phase 1: An intuitive interface that will document our CPE](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%201.md)
 
-[Phase 2: Document device with specific organizational parameters ](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/Phase%202.md)
+[Phase 2: Document device with specific organizational parameters ](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%202.md)
 
