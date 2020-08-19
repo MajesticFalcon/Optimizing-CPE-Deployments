@@ -28,3 +28,9 @@ compose:
   ansible_network_os: platform.slug
 ```
 
+Save this file as netbox_inventory.yml
+
+You can test your integration by running 
+```python
+ansible-inventory -v --list -i netbox_inventory.yml
+```
