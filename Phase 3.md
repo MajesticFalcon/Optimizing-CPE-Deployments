@@ -7,6 +7,7 @@ In order to pull data from Netbox, we need to generate a token. This can be done
 For more information on authentication methods visit the [Authentication](https://netbox.readthedocs.io/en/stable/api/authentication/) documentation
 
 Otherwise, generate your token and copy it.
+
 ![Phase 3 Token Screen](/img/phase_3_token_screen.PNG)
 
 Now we need to create a yaml configuration file to use as the dynamic inventory for Ansible.
