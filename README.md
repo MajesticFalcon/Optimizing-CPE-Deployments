@@ -73,3 +73,5 @@ To accomplish these goals, we can utilize the following:
 [Phase 7: Creating an endpoint for the webhooks](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%207.md)
 
 [Phase 8: Create the Netbox webhook](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%208.md)
+
+[Phase 9: Uploading configurations to Gitlab](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%209.md)
