@@ -62,3 +62,14 @@ To accomplish these goals, we can utilize the following:
 
 [Phase 2: Document device with specific organizational parameters ](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%202.md)
 
+[Phase 3: Configuring Ansible for Netbox](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%203.md)
+
+[Phase 4: Writing our Ansible playbook](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%204.md)
+
+[Phase 5: Writing our Jinja template](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%205.md)
+
+[Phase 6: Checkpoint. Let's recap and test what we have done so far](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%206.md)
+
+[Phase 7: Creating an endpoint for the webhooks](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%207.md)
+
+[Phase 8: Create the Netbox webhook](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%208.md)
