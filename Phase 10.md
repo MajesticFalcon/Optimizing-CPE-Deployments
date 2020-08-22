@@ -8,7 +8,7 @@ In Netbox, do the following:
 
 ![Netbox Clink](/img/phase_10_c_link.PNG)
 
-Replace "root" with your username and now you should be able to download configuration files from the device page like below.
+Replace the first "-" with your Gitlab server and "root" with your username and now you should be able to download configuration files from the device page like below.
 
 
 ![Netbox Clink](/img/phase_10_download.PNG)
