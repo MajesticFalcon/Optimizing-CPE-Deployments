@@ -5,6 +5,11 @@
 
 In this project, I explore a potential method for allowing installation crews to generate their own configurations at will. The goal is to remove the technical nature of preparing CPE equipment, device management software, and monitoring services. 
 
+Example
+
+![Gif not loaded](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/uZOTE9SgD2.gif)
+
+
 ### Examining the problem
 There has been a growing problem regarding CPE availability now that office staff work from home. The installer teams must request the list of CPEs well in advance to give our technicians ample time to schedule in office visits. The procedure looks like this.
 
