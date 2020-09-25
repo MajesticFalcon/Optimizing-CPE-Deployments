@@ -7,7 +7,7 @@ In this project, I explore a potential method for allowing installation crews to
 
 Example
 
-![Gif not loaded](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/auto_uplink_config.gif)
+![Gif not loaded](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/auto_upl_config.gif)
 
 
 ### Examining the problem
