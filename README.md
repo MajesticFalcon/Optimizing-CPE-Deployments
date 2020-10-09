@@ -63,7 +63,9 @@ To accomplish these goals, we can utilize the following:
 
 *This primer won’t detail how any of these services work, but instead how they may be utilized to accomplish the task above.
 
-[Pic not loaded](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Mikrotik_Config_Process.png)
+## Process Diagram
+<img src="https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Mikrotik_Config_Process.png" width="600" height="800"/>
+
 
 ## Section 1
 [Phase 1: An intuitive interface that will document our CPE](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%201.md)
