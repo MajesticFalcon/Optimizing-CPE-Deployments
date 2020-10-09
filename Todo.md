@@ -11,7 +11,18 @@ Automate the logistics surrounding new customer installations
   - [ ] Verify the identity of the new device
   - [ ] Reset and apply configuration to new device
   - [ ] Play beep code on new device to indicate success
-  
+- [ ] Dockerize project to allow for anybody to replicate environment
+  - [ ] Docker-compose project including the following managed containers
+    - [ ] Database
+    - [ ] Netbox
+    - [ ] Zabbix
+    - [ ] Gitlab
+    - [ ] Syslog
+- [ ] Upload code for scripts to allow for easy adoption
+  - [ ] Sanitize code
+  - [ ] Add comments
+- [ ] Daemonize Flask
+
 ### In Progress
 - [ ] Find next available uplink switch port and configure Netbox
 
