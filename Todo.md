@@ -4,7 +4,6 @@ Automate the logistics surrounding new customer installations
 ### Todo
 - [ ] Configure uplink switch port using Ansible and Flask
 - [ ] Optionally send syslog event to server or file to indicate completion
-- [ ] Optionally send email to indicate completion 
 - [ ] Design auto configuration application process 
   - [ ] Special VLAN for configuration
   - [ ] Python loop searching for new device on ethernet segment
@@ -21,10 +20,19 @@ Automate the logistics surrounding new customer installations
 - [ ] Upload code for scripts to allow for easy adoption
   - [ ] Sanitize code
   - [ ] Add comments
-- [ ] Daemonize Flask
+- [ ] Add asset tag
+- [ ] Add secret
+- [ ] Add optional tag
+
 
 ### In Progress
-- [ ] Find next available uplink switch port and configure Netbox
+- [ ] Daemonize Flask
+- [ ] Use git for application files. Ansible, Flask, Netbox scripts, etc.
+- [ ] Only configure zabbix if checkbox is checked
+- [ ] Optionally send email to indicate completion 
+- [ ] Connect comments box to device comments
+- [ ] Add indications if either Zabbix, Gitlab, Ansible, or other dependancy fails
+- [ ] Add option to select uplink port automatically. Set as default
 
 ### Done ✓
 - [x] Simple GUI to document CPE
@@ -35,5 +43,7 @@ Automate the logistics surrounding new customer installations
 - [x] Create Webhook
 - [x] Create custom button in Netbox
 - [x] Integrate with Zabbix
+- [x] Find next available uplink switch port and configure Netbox
+- [x] Add Flask app code
 
 

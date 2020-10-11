@@ -3,7 +3,8 @@ Description=Network automation web app
 After=network.target
 
 [Service]
-User=sutley
+User=sutley 
+#use your own user and directory
 WorkingDirectory=/flask
 ExecStart=/usr/bin/python3 /flask/app.py
 Restart=always
