@@ -91,3 +91,6 @@ To accomplish these goals, we can utilize the following:
 [Phase 10: Add custom button to Netbox for Git integration](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%2010.md)
 
 [Phase 11: Integrate with Zabbix monitoring system](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%2011.md)
+
+## Section 4
+[Phase 12: Find available uplink port ](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/Phase%2012.md)

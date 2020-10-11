@@ -1,0 +1,12 @@
+[Unit]
+Description=Network automation web app
+After=network.target
+
+[Service]
+User=sutley
+WorkingDirectory=/flask
+ExecStart=/usr/bin/python3 /flask/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

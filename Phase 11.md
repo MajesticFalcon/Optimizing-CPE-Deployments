@@ -1,6 +1,6 @@
 # Phase 11: Integrate with Zabbix monitoring system
 
-The last step is to add the device to the monitoring system where ICMP statistics, interface optic levels and more begin to be recorded.
+Next, we need to add the device to the monitoring system where ICMP statistics, interface optic levels and more begin to be recorded.
 
 
 1. Add py-zabbix to netbox requirements.txt
