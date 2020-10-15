@@ -35,7 +35,7 @@ In your script you should now be able to utilize the API package
                 details=dict(
                     version="1", 
                     bulk="0",
-                    community="gofast89")
+                    community=self.SNMP_COMMUNITY)
                 ),
             groups=dict(
                 groupid=15
