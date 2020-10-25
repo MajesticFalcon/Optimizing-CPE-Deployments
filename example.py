@@ -102,6 +102,7 @@ class New(Script):
         ip.save()
         device.primary_ip4_id=ip.id
         device.primary_ip_id=ip.id
+        device.comments = data['comments']
         device.save()
         
                 #############

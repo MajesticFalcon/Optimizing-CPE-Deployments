@@ -28,11 +28,8 @@ Automate the logistics surrounding new customer installations
 ### In Progress
 - [ ] Daemonize Flask
 - [ ] Use git for application files. Ansible, Flask, Netbox scripts, etc.
-- [ ] Only configure zabbix if checkbox is checked
 - [ ] Optionally send email to indicate completion 
-- [ ] Connect comments box to device comments
-- [ ] Add indications if either Zabbix, Gitlab, Ansible, or other dependancy fails
-- [ ] Add option to select uplink port automatically. Set as default
+
 
 ### Done ✓
 - [x] Simple GUI to document CPE
@@ -45,5 +42,8 @@ Automate the logistics surrounding new customer installations
 - [x] Integrate with Zabbix
 - [x] Find next available uplink switch port and configure Netbox
 - [x] Add Flask app code
-
+- [x] Connect comments box to device comments
+- [x] Add indications if either Zabbix, Gitlab, Ansible, or other dependancy fails
+- [x] Add option to select uplink port automatically. Set as default
+- [x] Only configure zabbix if checkbox is checked
 
