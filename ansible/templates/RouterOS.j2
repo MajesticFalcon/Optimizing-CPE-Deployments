@@ -1,0 +1,64 @@
+/system identity set name={{inventory_hostname}}
+{% for intf in nb_interfaces.json.results %}
+{%   if intf.description == "internet" %}
+/tool graphing interface
+add allow-address={{nb_contexts.json.results[0].data.management_networks}} interface={{intf.name}}
+{%   endif %}
+{%   if intf.description != "" and intf.type.value != "virtual" %}
+/interface ethernet set [ find default-name={{ intf.name }} ] name="{{ intf.name }} - {{ intf.description }}"
+{%   endif %}
+{%   if intf.type.value == "virtual" %}
+/interface bridge add name={{ intf.name }} protocol-mode=none
+{%   endif %}
+{%   for address in nb_ips.json.results %}
+{%     if address.interface.name == intf.name %}
+/ip address add address={{ address.address }} interface={{ intf.name }}
+{%     endif %}
+{%   endfor %}
+{%   if intf.mode != None %}
+{%     if intf.mode.value == "tagged" %}
+{%       for vlan in intf.tagged_vlans %}
+/interface bridge add name=b{{vlan.vid}} protocol-mode=none
+/interface vlan add vlan-id={{vlan.vid}} name={{intf.name}}v{{vlan.vid}} interface={{intf.name}}
+/interface bridge port add interface={{intf.name}}v{{vlan.vid}} bridge=b{{vlan.vid}}
+{%       endfor %}
+{%     elif intf.mode.value == "access" %}
+/interface bridge add name=b{{intf.untagged_vlan.vid}} protocol-mode=none
+/interface bridge port add interface={{intf.name}} bridge=b{{intf.untagged_vlan.vid}}
+{%     endif %}
+{%   endif %}
+/queue interface set {{intf.name}} queue=ethernet-default
+{%   endfor %}
+/queue type set 1 pfifo-limit=2048
+/ip neighbor discovery-settings set discover-interface-list=none
+/ip firewall filter 
+add action=accept chain=input comment=Management src-address={{ nb_contexts.json.results[0].data.management_networks}}
+add action=accept chain=output dst-address={{ nb_contexts.json.results[0].data.management_networks}}
+add action=accept chain=input comment=NTP protocol=udp src-address={{nb_contexts.json.results[0].data.ntp_server}} src-port=123
+add action=accept chain=output comment=SYSLOG dst-address={{ nb_contexts.json.results[0].data.syslog_server }}
+#Dont add these rules yet
+#add action=drop chain=input
+#add action=drop chain=output
+#add action=drop chain=forward
+/ip route
+add gateway={{ nb_contexts.json.results[0].data.gateway}}
+/ip service
+set telnet disabled=yes
+set ftp disabled=yes
+set www disabled=yes
+set api disabled=yes
+set api-ssl disabled=yes
+/system logging
+add action=disk topics=critical
+/system ntp client
+set enabled=yes primary-ntp={{nb_contexts.json.results[0].data.ntp_server}}
+/tool bandwidth-server
+set enabled=no
+/tool graphing resource
+add allow-address={{ nb_contexts.json.results[0].data.management_networks}}
+/tool mac-server
+set allowed-interface-list=none
+/tool mac-server mac-winbox
+set allowed-interface-list=none
+/tool mac-server ping
+set enabled=no

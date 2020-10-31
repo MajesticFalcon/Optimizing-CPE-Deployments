@@ -5,10 +5,8 @@
   gather_facts: no
   vars:
     netbox_url: "https://172.16.100.56"
-# CHANGE URL TO POINT TOWARD YOUR NETBOX SERVER
     netbox_token: b56a25c8bbbc5941c9e1f30291a342ad672e1db8
-# CHANGE NETBOX TOKEN AS SHOWN IN PHASE 4
-    working_folder: "/docker/git"
+    working_folder: "/optimizing_cpes/gitlab"
 
   tasks:
     - name: Get config context from Netbox
@@ -63,7 +61,7 @@
 
     - name: Create configuration file for {{ inventory_hostname }}
       template:
-          src: "templates/{{nb_device['json']['results'][0]['platform']['name']}}.j2"
+          src: "/optimizing_cpes/ansible/templates/{{nb_device['json']['results'][0]['platform']['name']}}.j2"
           dest: "{{working_folder}}/{{inventory_hostname}}/{{inventory_hostname}}.conf"
 
 

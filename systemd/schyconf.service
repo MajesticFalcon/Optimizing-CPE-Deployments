@@ -6,7 +6,7 @@ After=network.target
 User=sutley 
 #use your own user and directory
 WorkingDirectory=/flask
-ExecStart=/usr/bin/python3 /flask/app.py
+ExecStart=/usr/bin/python3 /optimizing_cpes/flask/app.py
 Restart=always
 
 [Install]

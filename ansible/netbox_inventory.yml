@@ -1,0 +1,10 @@
+---
+plugin: netbox
+api_endpoint: https://172.16.100.56
+token: b56a25c8bbbc5941c9e1f30291a342ad672e1db8
+validate_certs: False
+config_context: True
+group_by:
+  - device_roles
+compose:
+  ansible_network_os: platform.slug

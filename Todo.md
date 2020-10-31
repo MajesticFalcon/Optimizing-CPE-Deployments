@@ -26,8 +26,6 @@ Automate the logistics surrounding new customer installations
 
 
 ### In Progress
-- [ ] Daemonize Flask
-- [ ] Use git for application files. Ansible, Flask, Netbox scripts, etc.
 - [ ] Optionally send email to indicate completion 
 
 
@@ -46,4 +44,7 @@ Automate the logistics surrounding new customer installations
 - [x] Add indications if either Zabbix, Gitlab, Ansible, or other dependancy fails
 - [x] Add option to select uplink port automatically. Set as default
 - [x] Only configure zabbix if checkbox is checked
+- [x] Use git for application files. Ansible, Flask, Netbox scripts, etc.
+- [x] Daemonize Flask
 
+  
