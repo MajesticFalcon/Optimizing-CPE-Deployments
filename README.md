@@ -64,7 +64,7 @@ To accomplish these goals, we can utilize the following:
 *This primer won’t detail how any of these services work, but instead how they may be utilized to accomplish the task above.
 
 ## Process Diagram
-<img src="https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/img/Mikrotik_Config_Process.png" width="600" height="800"/>
+<img src="https://lucid.app/publicSegments/view/316bcf5b-ed2d-45e5-a6ef-750f272bf96d/image.png"/>
 
 ## Lab Environment
 <img src="https://lucid.app/publicSegments/view/775c2ffd-36d1-4428-bca8-ab1c9489581b/image.png"/>
