@@ -1,7 +1,7 @@
 
 
-
 # A Primer for Optimizing FTTx CPE Deployments Using Free and Open Source Software
+[![Build Status](https://travis-ci.com/MajesticFalcon/Optimizing-CPE-Deployments.svg?branch=master)](https://travis-ci.com/MajesticFalcon/Optimizing-CPE-Deployments)
 
 In this project, I explore a potential method for allowing installation crews to generate their own configurations at will. The goal is to remove the technical nature of preparing CPE equipment, device management software, and monitoring services. 
 
