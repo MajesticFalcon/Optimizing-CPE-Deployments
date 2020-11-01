@@ -45,4 +45,4 @@ script:
     - cd "$TRAVIS_BUILD_DIR"
 
     # List the remaining errors - these will have to be fixed manually
-    - find . -name \*.py -exec pep8 {} +
+    - find . -name \*.py -exec pycodestyle {} +
