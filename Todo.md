@@ -2,7 +2,6 @@
 Automate the logistics surrounding new customer installations
 
 ### Todo
-- [ ] Configure uplink switch port using Ansible and Flask
 - [ ] Optionally send syslog event to server or file to indicate completion
 - [ ] Design auto configuration application process 
   - [ ] Special VLAN for configuration
@@ -23,11 +22,13 @@ Automate the logistics surrounding new customer installations
 - [ ] Add asset tag
 - [ ] Add secret
 - [ ] Add optional tag
+- [ ] Optionally send email to indicate completion 
+
 
 
 ### In Progress
-- [ ] Optionally send email to indicate completion 
-
+- [ ] Configure uplink switch port using Ansible and Flask
+- [ ] Add dockerfiles for zabbix and gitlab
 
 ### Done ✓
 - [x] Simple GUI to document CPE

@@ -22,6 +22,10 @@ def create_configuration():
     os.system("git -C /optimizing_cpes/gitlab commit -am 'auto commit from webhook'")
     os.system("git -C /optimizing_cpes/gitlab push origin master")
     return("/")
+@app.route('/test_ocnos', methods=['POST'])
+def test_ocnos():
+    os.system("ansible-playbook -i /optimizing_cpes/ansible/netbox_inventory.yml /optimizing_cpes/ansible/ocnos_test.yml")
+    return("/")
     
 if __name__ == '__name__':
     app.run()
