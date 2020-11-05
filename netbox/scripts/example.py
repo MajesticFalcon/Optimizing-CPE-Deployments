@@ -164,10 +164,9 @@ class New(Script):
                     for interface in interfaces:
                         if (
                             interface.connection_status is not True and
-                            interface.enabled is True and
                             interface.description == '' and
                             interface.type == '1000base-x-sfp'
-                        ):
+                           ):
                             selected_interface = interface
                             break
                     if selected_interface != "":
@@ -190,9 +189,6 @@ class New(Script):
                             "uplink switch chosen. Port {0} on {1}".format(
                                 selected_interface.name, agg_switch.name))
                         break
-                if selected_interface == "":
-                    self.log_error(
-                        "No available aggregate port found. Aggregate port not assigned.")
 
             except BaseException:
                 self.log("failed to document uplink switch")
