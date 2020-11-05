@@ -192,7 +192,8 @@ class New(Script):
                         break
                 if selected_interface == "":
                     self.log_failure(
-                        "No available aggregate port found. No aggregate port assigned.")
+                        "No available aggregate port found. \
+                        No aggregate port assigned.")
 
             except BaseException:
                 self.log("failed to document uplink switch")
