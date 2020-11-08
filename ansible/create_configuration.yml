@@ -63,7 +63,8 @@
       template:
           src: "/optimizing_cpes/ansible/templates/{{nb_device['json']['results'][0]['platform']['name']}}.j2"
           dest: "{{working_folder}}/{{inventory_hostname}}/{{inventory_hostname}}.conf"
-
+    
+- import_playbook: uplink_configuration.yml
 
 
 
