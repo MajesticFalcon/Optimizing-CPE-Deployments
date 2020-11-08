@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  vars:
+    netbox_url: "https://172.16.100.56"
+    netbox_token: b56a25c8bbbc5941c9e1f30291a342ad672e1db8
+    working_folder: "/optimizing_cpes/gitlab"
+
+  tasks:
+    - name: Get config context from Netbox
+      uri:
+        url: "{{netbox_url}}/api/dcim/interfaces/?device=123321&description=Uplink"
+        validate_certs: no
+        method: GET
+        return_content: yes
+        headers:
+          accept: "application/json"
+          Authorization: "Token {{netbox_token}}"
+      register: nb_uplink_interface
+    - set_fact:
+        switch: "{{ nb_uplink_interface['json']['results'][0]['connected_endpoint']['device']['name'] }}"
+        port: "{{ nb_uplink_interface['json']['results'][0]['connected_endpoint']['name']}}"
+        
+#USE CONNECTED UPLINK SWITCH AND SWITCH PORT TO RUN PLAYBOOK THAT CONFIGURES THE RUNNING DEVICE
+#VLAN NEEDS TO BE DYNAMIC
+- hosts: "{{ hostvars['localhost']['switch'] }} "
+  tasks:
+   - ocnos_config:
+       config_cmds:
+         - 'bridge 1 protocol ieee vlan-bridge'
+         - 'vlan 20 bridge 1'
+         - interface "{{ hostvars['localhost']['port'] }}"
+         - 'switchport'
+         - 'bridge-group 1'
+         - 'switchport mode trunk'
+         - 'switchport trunk allowed vlan add 20'     
+        
+          
