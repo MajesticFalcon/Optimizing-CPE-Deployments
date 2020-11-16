@@ -70,7 +70,7 @@ class New(Script):
     skip_uplink_port = BooleanVar(label="Disable upstream port selection")
     confirmation_email = BooleanVar(label="Send Confirmation Email")
 
-    def run(self, data):
+    def run(self, data, commit):
         # Create the device
         device = Device(
             name=data['business_name'],
@@ -124,7 +124,7 @@ class New(Script):
         device.save()
 
         # ############
-        if(not data["skip_zabbix"]):
+        if(not data["skip_zabbix"] and commit):
 
             # Post to Zabbix API to create host in mikrotik group and ICMP
             # template
@@ -154,7 +154,7 @@ class New(Script):
             except Exception as e:
                 self.log_info("failed to configure zabbix {0}".format(e))
 
-        if(not data["skip_uplink_port"]):
+        if(not data["skip_uplink_port"] and commit):
             try:
                 agg_switches = Device.objects.filter(
                     site=data["uplink_site"],
