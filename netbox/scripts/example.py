@@ -29,6 +29,7 @@ class New(Script):
                        and configure uplink switch and linkage"
         field_order = [
             'business_name',
+            'asset_tag',
             'uplink_site',
             'skip_zabbix',
             'skip_uplink_port',
@@ -61,6 +62,7 @@ class New(Script):
         choices=(
             (True, "Rack Mount"), (False, "Wall Mount")))
     business_name = StringVar(label="Business Name")
+    asset_tag = StringVar(label="Asset Tag")
     hardware_choice = ChoiceVar(choices=CHOICES)
     comments = TextVar(label="Comments", required=False)
     uplink_site = ObjectVar(SITES)
@@ -72,6 +74,7 @@ class New(Script):
         # Create the device
         device = Device(
             name=data['business_name'],
+            asset_tag=data['asset_tag'],
             device_role_id=self.DEVICE_ROLE_ID,
             device_type_id=data["hardware_choice"],
             platform_id=self.PLATFORM_ID,
