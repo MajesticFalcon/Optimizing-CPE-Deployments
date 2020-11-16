@@ -62,7 +62,7 @@ class New(Script):
         choices=(
             (True, "Rack Mount"), (False, "Wall Mount")))
     business_name = StringVar(label="Business Name")
-    asset_tag = StringVar(label="Asset Tag")
+    asset_tag = StringVar(label="Asset Tag", required=False)
     hardware_choice = ChoiceVar(choices=CHOICES)
     comments = TextVar(label="Comments", required=False)
     uplink_site = ObjectVar(SITES)
