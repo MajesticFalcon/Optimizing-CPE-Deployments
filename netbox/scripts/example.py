@@ -29,6 +29,7 @@ class New(Script):
                        and configure uplink switch and linkage"
         field_order = [
             'business_name',
+            'asset_tag',
             'uplink_site',
             'skip_zabbix',
             'skip_uplink_port',
@@ -61,6 +62,7 @@ class New(Script):
         choices=(
             (True, "Rack Mount"), (False, "Wall Mount")))
     business_name = StringVar(label="Business Name")
+    asset_tag = StringVar(label="Asset Tag", required=False)
     hardware_choice = ChoiceVar(choices=CHOICES)
     comments = TextVar(label="Comments", required=False)
     uplink_site = ObjectVar(SITES)
@@ -68,10 +70,11 @@ class New(Script):
     skip_uplink_port = BooleanVar(label="Disable upstream port selection")
     confirmation_email = BooleanVar(label="Send Confirmation Email")
 
-    def run(self, data):
+    def run(self, data, commit):
         # Create the device
         device = Device(
             name=data['business_name'],
+            asset_tag=data['asset_tag'],
             device_role_id=self.DEVICE_ROLE_ID,
             device_type_id=data["hardware_choice"],
             platform_id=self.PLATFORM_ID,
@@ -121,7 +124,7 @@ class New(Script):
         device.save()
 
         # ############
-        if(not data["skip_zabbix"]):
+        if(not data["skip_zabbix"] and commit):
 
             # Post to Zabbix API to create host in mikrotik group and ICMP
             # template
@@ -151,7 +154,7 @@ class New(Script):
             except Exception as e:
                 self.log_info("failed to configure zabbix {0}".format(e))
 
-        if(not data["skip_uplink_port"]):
+        if(not data["skip_uplink_port"] and commit):
             try:
                 agg_switches = Device.objects.filter(
                     site=data["uplink_site"],
