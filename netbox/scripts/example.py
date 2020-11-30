@@ -50,7 +50,8 @@ class New(Script):
     )
     INET_VLAN = VLAN.objects.get(vid=900)
     MGMT_VLAN = VLAN.objects.get(vid=107)
-    SITES = Site.objects.filter(region_id=1)
+    #SITES = Site.objects.filter(region_id=1)
+    REGION = 1
     ZAPI = ZabbixAPI(
         url='http://172.16.101.51/api_jsonrpc.php/',
         user='Admin',
@@ -65,7 +66,12 @@ class New(Script):
     asset_tag = StringVar(label="Asset Tag", required=False)
     hardware_choice = ChoiceVar(choices=CHOICES)
     comments = TextVar(label="Comments", required=False)
-    uplink_site = ObjectVar(SITES)
+    uplink_site =  ObjectVar(
+	model=Site,
+	query_params={
+		'region_id': REGION
+	}
+    }
     skip_zabbix = BooleanVar(label="Disable Zabbix configuration")
     skip_uplink_port = BooleanVar(label="Disable upstream port selection")
     confirmation_email = BooleanVar(label="Send Confirmation Email")
