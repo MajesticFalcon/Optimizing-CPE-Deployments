@@ -1,0 +1,51 @@
+---
+- hosts: localhost
+  vars:
+    netbox_url: "http://netbox"
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    working_folder: "/optimizing_cpes/gitlab"
+
+
+  tasks:
+    - name: Get config context from Netbox
+      uri:
+        url: "{{netbox_url}}/api/dcim/interfaces/?device={{device_name}}&description=Uplink"
+        validate_certs: no
+        method: GET
+        return_content: yes
+        headers:
+          accept: "application/json"
+          Authorization: "Token {{netbox_token}}"
+      register: nb_uplink_interface
+    - set_fact:
+        switch: "{{ nb_uplink_interface['json']['results'][0]['connected_endpoint']['device']['name'] }}"
+        port: "{{ nb_uplink_interface['json']['results'][0]['connected_endpoint']['name']}}"
+        vlans: "{{ nb_uplink_interface['json']['results'][0]['tagged_vlans']}}"
+    - debug:
+        var: vlans
+
+- hosts: "{{ hostvars['localhost']['switch'] }} "
+  tasks:
+    - name: Name the interface
+      ocnos_config:
+        config_cmds:
+        - interface "{{hostvars['localhost']['port']}}"
+        - description "{{device_name}}"
+    - name: Create VLAN and assign to bridge if not already
+      ocnos_config:
+        config_cmds:
+        - vlan "{{item.vid}}" bridge 1 state enable
+      with_items: "{{ hostvars['localhost']['vlans']}}"
+    - name: Set interface to L2 and trunk
+      ocnos_config:
+        config_cmds:
+        - interface "{{hostvars['localhost']['port']}}"
+        - switchport
+        - bridge-group 1
+        - switchport mode trunk
+    - name: Allow VLANs on trunk interface
+      ocnos_config:
+        config_cmds:
+        - interface "{{hostvars['localhost']['port']}}"
+        - switchport trunk allowed vlan add "{{item.vid}}"
+      with_items: "{{hostvars['localhost']['vlans']}}"

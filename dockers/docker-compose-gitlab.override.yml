@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  gitlab:
+    networks:
+      netbox-docker_default:
+        aliases:
+        - zabbix-server
+        - zabbix-server-mysql
+        - zabbix-server-ubuntu-mysql
+        - zabbix-server-mysql-ubuntu
+networks:
+  netbox-docker_default:
+    external: true
+    driver: bridge

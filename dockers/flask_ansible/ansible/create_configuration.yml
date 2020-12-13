@@ -1,0 +1,77 @@
+---
+- hosts: "{{ device_name }}"
+  connection: network_cli
+  become: no
+  gather_facts: no
+  vars:
+    netbox_url: "http://netbox"
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    working_folder: "/optimizing_cpes/gitlab"
+
+  tasks:
+    - name: Get config context from Netbox
+      uri:
+        url: "{{netbox_url}}/api/extras/config-contexts/"
+        validate_certs: no
+        method: GET
+        return_content: yes
+        headers:
+          accept: "application/json"
+          Authorization: "Token {{netbox_token}}"
+      register: nb_contexts
+
+    - name: Get device from Netbox
+      uri:
+        url: "{{ netbox_url }}/api/dcim/devices/?name={{inventory_hostname}}"
+
+        validate_certs: no
+        method: GET
+        return_content: yes
+        headers:
+          accept: "application/json"
+          Authorization: "Token {{netbox_token}}"
+      register: nb_device
+
+    - name: Get interfaces for host
+      uri:
+        url: "{{netbox_url}}/api/dcim/interfaces/?device={{inventory_hostname}}"
+        validate_certs: no
+        method: GET
+        return_content: yes
+        headers:
+          accept: "application/json"
+          Authorization: "Token {{netbox_token}}"
+      register: nb_interfaces
+
+    - name: Get ip addresses for host
+      uri:
+        url: "{{netbox_url}}/api/ipam/ip-addresses/?device={{inventory_hostname}}"
+        validate_certs: no
+        method: GET
+        return_content: yes
+        headers:
+          accept: "application/json"
+          Authorization: "Token {{netbox_token}}"
+      register: nb_ips
+
+    - name: Create temp folder for {{ inventory_hostname }}
+      file:
+        dest: "{{working_folder }}/{{inventory_hostname}}"
+        state: directory
+
+    - name: Create configuration file for {{ inventory_hostname }}
+      template:
+          src: "/optimizing_cpes/ansible/templates/{{nb_device['json']['results'][0]['platform']['name']}}.j2"
+          dest: "{{working_folder}}/{{inventory_hostname}}/{{inventory_hostname}}.conf"
+    
+- import_playbook: uplink_configuration.yml
+
+
+
+
+
+
+
+
+
+

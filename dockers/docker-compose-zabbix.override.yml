@@ -1,0 +1,39 @@
+version: '3.4'
+services:
+  zabbix-server:
+    networks:
+      netbox-docker_default:
+  zabbix-proxy-sqlite3:
+    networks:
+      netbox-docker_default:
+  zabbix-proxy-mysql:
+    networks:
+      netbox-docker_default:
+  zabbix-web-apache-mysql:
+    networks:
+      netbox-docker_default:
+  zabbix-web-nginx-mysql:
+    ports:
+      - 8081:80
+    networks:
+      netbox-docker_default:
+  zabbix-agent:
+    networks:
+      netbox-docker_default:
+  zabbix-java-gateway:
+    networks:
+      netbox-docker_default:
+  zabbix-snmptraps:
+    networks:
+      netbox-docker_default:
+  mysql-server:
+    networks:
+      netbox-docker_default:
+  db_data_mysql:
+    networks:
+      netbox-docker_default:
+      
+networks:
+  netbox-docker_default:
+    external: true
+    driver: bridge

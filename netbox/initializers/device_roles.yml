@@ -1,0 +1,9 @@
+ - name: Core
+   slug: core
+   color: Grey
+ - name: Aggregation
+   slug: aggregation
+   color: Grey
+ - name: CPE
+   slug: cpe
+   color: Grey

@@ -1,0 +1,13 @@
+- model: RB2011
+  manufacturer: Mikrotik
+  slug: rb2011
+  u_height: 1
+- model: RB2011-RM
+  manufacturer: Mikrotik
+  slug: rb2011-rm
+  u_height: 1
+- model: AS5812
+  manufacturer: IPInfusion
+  slug: ipi
+  u_height: 1
+  

@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  flask:
+    networks:
+      netbox-docker_default:
+networks:
+  netbox-docker_default:
+    external: true
+    driver: bridge

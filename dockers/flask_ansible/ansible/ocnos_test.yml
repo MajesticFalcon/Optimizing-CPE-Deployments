@@ -1,0 +1,11 @@
+---
+- hosts: AggSw
+  tasks:
+   - ocnos_config:
+       config_cmds:
+         - interface eth5
+         - 'switchport'
+         - 'bridge-group 1'
+         - 'switchport mode trunk'
+         - 'switchport trunk allowed vlan add 20'
+

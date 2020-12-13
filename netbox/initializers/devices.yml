@@ -1,0 +1,26 @@
+## Possible Choices:
+##   face:
+##   - front
+##   - rear
+##   status:
+##   - offline
+##   - active
+##   - planned
+##   - staged
+##   - failed
+##   - inventory
+##   - decommissioning
+##
+## Examples:
+
+- name: aggsw
+  device_role: Aggregation
+  device_type: AS5812
+  site: Main
+  primary_ip4: 10.0.7.2/24
+- name: cpe1
+  device_role: Aggregation
+  device_type: AS5812
+  site: Main
+  primary_ip4: 10.0.7.2/24
+
