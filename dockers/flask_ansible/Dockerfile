@@ -1,6 +1,7 @@
 
 FROM python:3.8-alpine
 COPY flask/app.py /flask/
+RUN mkdir /root/.ansible
 RUN mkdir /root/.ansible/plugins
 RUN mkdir /root/.ansible/plugins/modules
 COPY ansible/models/ocnos/ocnos_config.py /root/.ansible/plugins/modules/
