@@ -16,10 +16,17 @@
 ##
 ## Examples:
 
-- address: 10.0.7.2/24
+- address: 10.0.7.4/24
   device: aggsw
   interface: uplink
   status: active
+
+- address: 10.0.7.5/24
+  device: cpe1
+  interface: uplink
+  status: active
+
+
 # - address: 2001:db8:a000:1::1/64
 #   device: server01
 #   interface: to-server02

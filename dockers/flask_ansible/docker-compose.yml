@@ -3,7 +3,11 @@ services:
   flask:
     image: flask:0.0.6
     user: 'root'
-    ports:
-      - 5009:5008
     volumes:
       - ./ansible:/ansible/playbooks
+
+    
+networks:
+  netbox-docker_default:
+    external: true
+    driver: bridge

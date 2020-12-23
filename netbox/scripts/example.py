@@ -2,7 +2,7 @@
 
 """
 
-
+from django.contrib.contenttypes.models import ContentType
 from dcim.choices import InterfaceTypeChoices
 from dcim.models import Device, DeviceRole, Platform, Interface, Cable
 from django.core.exceptions import ObjectDoesNotExist
@@ -53,7 +53,7 @@ class New(Script):
     #SITES = Site.objects.filter(region_id=1)
     REGION = 1
     ZAPI = ZabbixAPI(
-        url='http://172.16.101.51/api_jsonrpc.php/',
+        url='http://zabbix-web-apache-mysql:8080/api_jsonrpc.php/',
         user='Admin',
         password='zabbix')
     SNMP_COMMUNITY = "got"
@@ -71,7 +71,7 @@ class New(Script):
 	query_params={
 		'region_id': REGION
 	}
-    }
+    )
     skip_zabbix = BooleanVar(label="Disable Zabbix configuration")
     skip_uplink_port = BooleanVar(label="Disable upstream port selection")
     confirmation_email = BooleanVar(label="Send Confirmation Email")
@@ -80,7 +80,6 @@ class New(Script):
         # Create the device
         device = Device(
             name=data['business_name'],
-            asset_tag=data['asset_tag'],
             device_role_id=self.DEVICE_ROLE_ID,
             device_type_id=data["hardware_choice"],
             platform_id=self.PLATFORM_ID,
@@ -121,8 +120,8 @@ class New(Script):
             vlan=self.MGMT_VLAN).get_first_available_ip()
         ip = IPAddress(
             address=available_ip,
-            interface_id=mgmt_intf.id,
-            family='4')
+            assigned_object_type=ContentType.objects.get_for_model(Interface),
+            assigned_object_id=mgmt_intf.id)
         ip.save()
         device.primary_ip4_id = ip.id
         device.primary_ip_id = ip.id

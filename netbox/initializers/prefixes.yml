@@ -1,0 +1,5 @@
+- description: mgmt_107
+  prefix: 10.0.7.0/24
+  site: Main
+  status: active
+  vlan: mgmt

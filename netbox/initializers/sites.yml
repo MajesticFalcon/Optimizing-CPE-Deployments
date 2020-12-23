@@ -1,0 +1,6 @@
+- name: Customer Premise
+  slug: customer-premise
+  region: Downtown
+- name: Main
+  slug: mian
+  region: Downtown

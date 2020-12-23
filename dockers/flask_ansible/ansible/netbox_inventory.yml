@@ -1,7 +1,7 @@
 ---
 plugin: netbox
 api_endpoint: http://nginx:8080
-token: "0346c16e446eee0ccee3e660c60a84ea7a85b6f2"
+token: "0123456789abcdef0123456789abcdef01234567"
 validate_certs: False
 config_context: True
 group_by:

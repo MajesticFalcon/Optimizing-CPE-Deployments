@@ -1,6 +1,8 @@
 version: '3.4'
 services:
   flask:
+    ports:
+      - 5008:5008
     networks:
       netbox-docker_default:
 networks:

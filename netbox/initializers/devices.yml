@@ -17,10 +17,10 @@
   device_role: Aggregation
   device_type: AS5812
   site: Main
-  primary_ip4: 10.0.7.2/24
+  primary_ip4: 10.0.7.4/24
 - name: cpe1
-  device_role: Aggregation
-  device_type: AS5812
+  device_role: CPE
+  device_type: RB2011-RM
   site: Main
-  primary_ip4: 10.0.7.2/24
+  primary_ip4: 10.0.7.5/24
 

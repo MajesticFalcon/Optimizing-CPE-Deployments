@@ -25,3 +25,7 @@
   type: 1000base-x-sfp
   name: xe3
 
+- device: cpe1
+  enabled: true
+  type: 1000base-x-sfp
+  name: uplink

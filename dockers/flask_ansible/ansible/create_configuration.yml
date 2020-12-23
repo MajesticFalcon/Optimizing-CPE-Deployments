@@ -4,7 +4,7 @@
   become: no
   gather_facts: no
   vars:
-    netbox_url: "http://netbox"
+    netbox_url: "http://nginx:8080"
     netbox_token: 0123456789abcdef0123456789abcdef01234567
     working_folder: "/optimizing_cpes/gitlab"
 
@@ -61,10 +61,10 @@
 
     - name: Create configuration file for {{ inventory_hostname }}
       template:
-          src: "/optimizing_cpes/ansible/templates/{{nb_device['json']['results'][0]['platform']['name']}}.j2"
+          src: "/ansible/playbooks/templates/{{nb_device['json']['results'][0]['platform']['name']}}.j2"
           dest: "{{working_folder}}/{{inventory_hostname}}/{{inventory_hostname}}.conf"
     
-- import_playbook: uplink_configuration.yml
+# - import_playbook: uplink_configuration.yml
 
 
 
