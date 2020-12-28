@@ -7,7 +7,15 @@ services:
        # Add any other gitlab.rb configuration here, each on its own line
     ports:
       - '8082:80'
+      - '8083:22'
     volumes:
       - '$GITLAB_HOME/config:/etc/gitlab'
       - '$GITLAB_HOME/logs:/var/log/gitlab'
       - '$GITLAB_HOME/data:/var/opt/gitlab'
+    networks:
+      netbox-docker_default:
+    
+networks:
+  netbox-docker_default:
+    external: true
+    driver: bridge

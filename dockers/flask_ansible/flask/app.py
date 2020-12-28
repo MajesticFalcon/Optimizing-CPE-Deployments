@@ -12,15 +12,11 @@ app = Flask(__name__)
 @app.route('/create_configuration', methods=['POST'])
 def create_configuration():
     device_name = request.json["data"]["name"]
-    os.system("ansible-playbook \
-              -i /ansible/playbooks/netbox_inventory.yml \
-              /ansible/playbooks/create_configuration.yml \
-              -e 'device_name={0}'".format(device_name))
-    # os.system("git -C /optimizing_cpes/gitlab add .")
-    # os.system("git \
-              # -C /optimizing_cpes/gitlab commit \
-              # -am 'auto commit from webhook'")
-    # os.system("git -C /optimizing_cpes/gitlab push origin master")
+    ansible_process = Popen(["ansible-playbook", "-i", "/ansible/playbooks/netbox_inventory.yml", "/ansible/playbooks/create_configuration.yml", "-e", "device_name={0}".format(device_name)])
+    ansible_process.wait()
+    Popen(["/usr/bin/git", "-C", "/optimizing_cpes/gitlab", "add", "."])
+    Popen(["/usr/bin/git", "-C", "/optimizing_cpes/gitlab", "commit", "-am", "auto commit from webhook"])
+    Popen(["/usr/bin/git", "-C", "/optimizing_cpes/gitlab", "push", "origin", "master"])
     return("/")
 
 
@@ -33,7 +29,7 @@ def test_ocnos():
 
 @app.route('/test_init', methods=['GET'])
 def test_init():
-    return("Server is working!!!@@@1")
+    return("Server is working!")
 
 if __name__ == '__name__':
     app.run()

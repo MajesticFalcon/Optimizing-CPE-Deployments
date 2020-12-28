@@ -2,3 +2,4 @@ gitlab/
 .vscode/
 netbox-docker/
 dockers/zabbix-docker/
+dockers/gitlab/
