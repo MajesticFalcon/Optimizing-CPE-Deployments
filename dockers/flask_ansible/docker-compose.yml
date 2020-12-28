@@ -6,7 +6,8 @@ services:
     volumes:
       - ./ansible:/ansible/playbooks
       - ./flask:/flask
-    
+      - ./python:/python
+      - ./ssh:/root/.ssh/
 networks:
   netbox-docker_default:
     external: true

@@ -30,6 +30,7 @@ RUN pip3 list
 RUN apk add nano
 RUN apk add git
 RUN apk add openssh
+RUN pip3 install pysftp
 
 RUN git config --global user.email 'you@example.com'
 RUN git config --global user.name 'your name'

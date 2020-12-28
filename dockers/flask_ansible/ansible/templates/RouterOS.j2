@@ -1,36 +1,50 @@
-:delay 30s
-{% for intf in nb_interfaces.json.results %}
 
+:delay 30s
+
+{%- for intf in nb_interfaces.json.results -%}
+
+  {% if intf.name.startswith('b') %}
+    /interface bridge
+	add name={{ intf.name }} protocol-mode=none
+  {% endif %}
+  
+
+  
+
+  
+  
+  {%  if intf.mode != None %}
+    {%  if intf.mode.value == "tagged" %}
+	
+      {%  for vlan in intf.tagged_vlans %}
+        /interface vlan add vlan-id={{vlan.vid}} name={{intf.name}}v{{vlan.vid}} interface={{intf.name}}
+        /interface bridge port add interface={{intf.name}}v{{vlan.vid}} bridge=b{{vlan.vid}}
+      {%  endfor %}
+	  
+    {%  elif intf.mode.value == "access" %}
+      /interface bridge port add interface={{intf.name}} bridge=b{{intf.untagged_vlan.vid}}
+    {%  endif %}
+	
+  {%   endif %}
+  
+  
+  
   {%   if intf.description == "internet" %}
     /tool graphing interface
     add allow-address={{nb_contexts.json.results[0].data.management_networks}} interface={{intf.name}}
   {%   endif %}
   
-  {%   if intf.description != "" and intf.type.value != "virtual" %}
-    /interface ethernet set [ find default-name={{ intf.name }} ] name="{{ intf.name }} - {{ intf.description }}"
-  {%   endif %}
   
-  {%   if intf.mode != None %}
-    {%     if intf.mode.value == "tagged" %}
-	
-      {%       for vlan in intf.tagged_vlans %}
-        /interface bridge add name=b{{vlan.vid}} protocol-mode=none
-        /interface vlan add vlan-id={{vlan.vid}} name={{intf.name}}v{{vlan.vid}} interface={{intf.name}}
-        /interface bridge port add interface={{intf.name}}v{{vlan.vid}} bridge=b{{vlan.vid}}
-      {%       endfor %}
-	  
-    {%     elif intf.mode.value == "access" %}
-      /interface bridge add name=b{{intf.untagged_vlan.vid}} protocol-mode=none
-      /interface bridge port add interface={{intf.name}} bridge=b{{intf.untagged_vlan.vid}}
-    {%     endif %}
-	
-  {%   endif %}
-  /queue interface set {{intf.name}} queue=ethernet-default
   {%   for address in nb_ips.json.results %}
     {%     if address.assigned_object.name == intf.name %}
       /ip address add address={{ address.address }} interface={{ intf.name }}
     {%     endif %}
   {%   endfor %}
+  
+  {%   if intf.description != "" and intf.type.value != "virtual" %}
+    /interface ethernet set [ find default-name={{ intf.name }} ] name="{{ intf.name }} - {{ intf.description }}"
+  {%   endif %}
+  
 {%   endfor %}
 /ip neighbor discovery-settings 
 set discover-interface-list=none

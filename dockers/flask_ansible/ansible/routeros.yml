@@ -2,7 +2,7 @@
   gather_facts: no
   tasks:
     - name: copy file 
-      shell: "scp ../gitlab/123321/123321.conf admin@192.168.255.3:/123321.auto.rsc"
+      shell: "scp /ansible/playbooks/models/routeros/reset_configuration.auto.rsc admin@192.168.255.3:/123321.auto.rsc"
 
 
 - hosts: AUTOCPE

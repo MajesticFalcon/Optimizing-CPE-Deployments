@@ -1,8 +1,0 @@
----
-#this is very hacky. 
-#too bad the integration between ansible and routeros is trash.
-- hosts: localhost
-  gather_facts: no
-  tasks:
-    - name: copy file 
-      shell: "scp ../gitlab/123321/123321.conf admin@192.168.255.3:/123321.conf"

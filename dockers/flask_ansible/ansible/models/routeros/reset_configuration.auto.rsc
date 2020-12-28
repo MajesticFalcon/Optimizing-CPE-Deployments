@@ -1,1 +1,1 @@
-/system reset-configuration run-after-reset=auto_config.rsc
+/system reset-configuration no-defaults=yes skip-backup=yes run-after-reset=auto_config.rsc

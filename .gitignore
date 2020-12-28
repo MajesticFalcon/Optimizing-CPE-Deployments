@@ -3,3 +3,4 @@ gitlab/
 netbox-docker/
 dockers/zabbix-docker/
 dockers/gitlab/
+dockers/flask_ansible/ssh
