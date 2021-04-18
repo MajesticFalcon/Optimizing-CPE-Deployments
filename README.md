@@ -6,6 +6,9 @@
 
 In this project, I explore a potential method for allowing installation crews to generate their own configurations at will. The goal is to remove the technical nature of preparing CPE equipment, device management software, and monitoring services. 
 
+# Notice
+This project was started and mostly finished before Netbox Plugins. I will release the codebase once I have this project wrapped up in a plugin. ETA: 8/1/2021
+
 Example
 
 ![Gif not loaded](https://github.com/MajesticFalcon/Optimizing-CPE-Deployments/blob/master/img/uZOTE9SgD2.gif)
